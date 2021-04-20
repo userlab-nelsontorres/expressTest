@@ -1,9 +1,37 @@
-const { rejects } = require("assert");
 const express = require("express");
-const { resolve } = require("path");
+const http = require("http");
+const fs = require("fs");
 const app = express();
 const port = 3000;
 
+app.get("/", (req, res) => {
+  var options = {
+    hostname:
+      "https://api.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
+    port: 443,
+    path: "/",
+    method: "GET",
+    pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
+  };
+
+  options.agent = new https.Agent(options);
+
+  var req = https.request(options, function (res) {
+    console.log("statusCode: ", res.statusCode);
+    console.log("headers: ", res.headers);
+
+    res.on("data", function (d) {
+      process.stdout.write(d);
+    });
+  });
+  req.end();
+
+  req.on("error", function (e) {
+    console.error(e);
+  });
+});
+
+/*
 app.get("/", async (req, res) => {
   const request = require("request");
   const fs = require("fs");
@@ -42,7 +70,7 @@ app.get("/", async (req, res) => {
     console.log("catch", e);
     res.end();
   }
-});
+});*/
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
