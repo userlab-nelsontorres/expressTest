@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
       passphrase: "",
     },
   };
-
+  console.log(options, "options");
   request.get(options, (error, response, body) => {
     console.log(error);
     console.log(response);
