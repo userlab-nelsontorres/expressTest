@@ -18,7 +18,7 @@ app.get("/", async (req, res) => {
       pfx: fs.readFileSync(
         __dirname + "/Moocho-API-CertificationService-GW.p12"
       ),
-      passphrase: "",
+      passphrase: "password",
     },
   };
   console.log(options, "options");
