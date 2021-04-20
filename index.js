@@ -21,10 +21,11 @@ app.get("/", (req, res) => {
   };
   console.log(options, "options");
   request.get(options, (error, response, body) => {
-    console.log(error);
-    console.log(response);
-    console.log(body);
+    console.log(error, "error");
+    console.log(response, "response");
+    console.log(body, "body");
   });
+  console.log("end");
   res.send("Hello World!");
 });
 
