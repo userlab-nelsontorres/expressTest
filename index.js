@@ -22,19 +22,23 @@ app.get("/", async (req, res) => {
     },
   };
   console.log(options, "options");
-  await new Promise((resolve, rejects) => {
-    request.get(options, (error, response, body) => {
-      if (error) {
-        rejects(error);
-        console.log(error, "error");
-      }
-      console.log(response, "response");
-      console.log(body, "body");
-      resolve(response);
+  try {
+    await new Promise((resolve, rejects) => {
+      request.get(options, (error, response, body) => {
+        if (error) {
+          console.log(error, "error");
+          rejects(error);
+        }
+        console.log(response, "response");
+        console.log(body, "body");
+        resolve(response);
+      });
     });
-  });
-  console.log("end");
-  res.send("Hello World!");
+    console.log("end");
+    res.send("Hello World!");
+  } catch (e) {
+    console.log("catch", e);
+  }
 });
 
 app.listen(port, () => {
