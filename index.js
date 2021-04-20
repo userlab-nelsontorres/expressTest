@@ -19,6 +19,7 @@ app.get("/", async (req, res) => {
         __dirname + "/Moocho-API-CertificationService-GW.p12"
       ),
       passphrase: "password",
+      securityOptions: "SSL_OP_NO_SSLv3",
     },
   };
   console.log(options, "options");
@@ -39,6 +40,7 @@ app.get("/", async (req, res) => {
     res.send("Hello World!");
   } catch (e) {
     console.log("catch", e);
+    res.end();
   }
 });
 
