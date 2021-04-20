@@ -28,10 +28,11 @@ app.get("/", async (req, res) => {
         if (error) {
           console.log(error, "error");
           rejects(error);
+        } else {
+          console.log(response, "response");
+          console.log(body, "body");
+          resolve(response);
         }
-        console.log(response, "response");
-        console.log(body, "body");
-        resolve(response);
       });
     });
     console.log("end");
