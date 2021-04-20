@@ -5,7 +5,7 @@ const port = 3000;
 app.get("/", (req, res) => {
   const request = require("request");
   const fs = require("fs");
-
+  console.log(__dirname, "__dirname");
   var options = {
     url:
       "https://api.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     },
     agentOptions: {
       pfx: fs.readFileSync(
-        __dirname + "/certs/Moocho-API-CertificationService-GW.p12"
+        __dirname + "/Moocho-API-CertificationService-GW.p12"
       ),
       passphrase: "",
     },
