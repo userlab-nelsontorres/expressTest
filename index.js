@@ -13,7 +13,9 @@ app.get("/", (req, res) => {
       "content-type": "application/json",
     },
     agentOptions: {
-      pfx: fs.readFileSync(__dirname + "/certs/myCert.p12"),
+      pfx: fs.readFileSync(
+        __dirname + "/certs/Moocho-API-CertificationService-GW.p12"
+      ),
       passphrase: "",
     },
   };
