@@ -1,9 +1,21 @@
 const express = require("express");
 const https = require("https");
 const fs = require("fs");
-const app = express();
+//const app = express();
 const port = 3000;
 
+const options = {
+  pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
+};
+
+https
+  .createServer(options, function (req, res) {
+    res.writeHead(200);
+    res.end("hello world\n");
+  })
+  .listen(port);
+
+/*
 app.get("/", (req, res) => {
   var options = {
     hostname:
@@ -30,7 +42,7 @@ app.get("/", (req, res) => {
     console.error(e);
   });
 });
-
+*/
 /*
 app.get("/", async (req, res) => {
   const request = require("request");
@@ -70,8 +82,8 @@ app.get("/", async (req, res) => {
     console.log("catch", e);
     res.end();
   }
-});*/
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-});
+});*/
