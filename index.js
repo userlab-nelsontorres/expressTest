@@ -62,7 +62,7 @@ app.get("/", async (req, res) => {
         __dirname + "/Moocho-API-CertificationService-GW.p12"
       ),
       passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
-      //securityOptions: "SSL_OP_NO_SSLv3",
+      securityOptions: "SSL_OP_NO_SSLv3",
     },
   };
   console.log(options, "options");
