@@ -1,10 +1,16 @@
-/*
 const express = require("express");
 const https = require("https");
 const fs = require("fs");
 const app = express();
 const port = 3000;
 
+app.get("/", (req, res) => {
+  res.send("Los roqueritos del regueton!", P);
+});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+/*
 const options = {
   pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
   passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
@@ -94,6 +100,7 @@ app.listen(port, () => {
 });*/
 
 //archivo index.js
+/*
 var express = require("express");
 var fs = require("fs");
 var https = require("https");
@@ -147,3 +154,4 @@ app.get("/", function (req, res) {
   });
   res.send("Server");
 });
+*/
