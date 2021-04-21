@@ -1,9 +1,10 @@
+/*
 const express = require("express");
 const https = require("https");
 const fs = require("fs");
 const app = express();
 const port = 3000;
-/*
+
 const options = {
   pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
   passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
@@ -16,7 +17,6 @@ https
     res.end("hello world\n");
   })
   .listen(port);
-*/
 
 app.get("/", (req, res) => {
   var options = {
@@ -87,8 +87,33 @@ app.get("/", async (req, res) => {
     console.log("catch", e);
     res.end();
   }
-});*/
+});
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
+});*/
+
+//archivo index.js
+var express = require("express");
+var fs = require("fs");
+var https = require("https");
+var app = express();
+
+const PUERTO = 443;
+
+https
+  .createServer(
+    {
+      cert: fs.readFileSync(`./certs/moochoBlack.crt`),
+      key: fs.readFileSync(`./certs/moochoBlack.key`),
+    },
+    app
+  )
+  .listen(PUERTO, function () {
+    console.log("Servidor https correindo en el puerto 443");
+  });
+
+app.get("/", function (req, res) {
+  res.send("Hola, estas en la pagina inicial");
+  console.log("Se recibio una petición get a través de https");
 });
