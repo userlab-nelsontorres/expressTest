@@ -16,7 +16,7 @@ https
     res.end("hello world\n");
   })
   .listen(port);
-
+*/
 
 app.get("/", (req, res) => {
   var options = {
@@ -45,8 +45,8 @@ app.get("/", (req, res) => {
     console.error(e, "ERROR");
   });
 });
-*/
 
+/*
 app.get("/", async (req, res) => {
   const request = require("request");
   const fs = require("fs");
@@ -56,7 +56,7 @@ app.get("/", async (req, res) => {
       "https://api.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
     headers: {
       "content-type": "application/json",
-      Accept: "*/*",
+     /
       requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
     },
     agentOptions: {
@@ -87,7 +87,7 @@ app.get("/", async (req, res) => {
     console.log("catch", e);
     res.end();
   }
-});
+});*/
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
