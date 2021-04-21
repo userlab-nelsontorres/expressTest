@@ -118,22 +118,29 @@ https
 app.get("/", function (req, res) {
   console.log("https");
   var options = {
-    hostname: "api.blackhawknetwork.com",
-    path: "/productCatalogManagement/v1/productCatalogs",
-    method: "GET",
     requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
 
   options.agent = new https.Agent(options);
+  https.headers = {
+    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
+  };
+  const headers = {
+    "content-type": "application/json",
+    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
+  };
+  var req = https.get(
+    "https://api.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
+    { headers },
+    function (res) {
+      console.log("statusCode: ", res.statusCode);
+      console.log("headers: ", res.headers);
 
-  var req = https.request(options, function (res) {
-    console.log("statusCode: ", res.statusCode);
-    console.log("headers: ", res.headers);
-
-    res.on("data", function (d) {
-      process.stdout.write(d);
-    });
-  });
+      res.on("data", function (d) {
+        process.stdout.write(d);
+      });
+    }
+  );
 
   req.on("error", function (e) {
     console.error(e, "ERROR");
