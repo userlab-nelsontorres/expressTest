@@ -21,7 +21,7 @@ https
 app.get("/", (req, res) => {
   var options = {
     hostname: "api.blackhawknetwork.com",
-    port: 443,
+    port: 8080,
     path: "/productCatalogManagement/v1/productCatalogs",
     method: "GET",
     pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
