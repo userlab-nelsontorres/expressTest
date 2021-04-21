@@ -6,7 +6,7 @@ const port = 3000;
 
 const options = {
   pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
-  passphrase: "",
+  passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
   agent: false,
 };
 
