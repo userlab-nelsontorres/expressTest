@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
   req.end();
 
   req.on("error", function (e) {
-    console.error(e);
+    console.error(e, "ERROR");
   });
 });
 /*
