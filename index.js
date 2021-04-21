@@ -106,6 +106,7 @@ https
     {
       cert: fs.readFileSync(`./certs/moochoBlack.crt`),
       key: fs.readFileSync(`./certs/moochoBlack.key`),
+      passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
     },
     app
   )
