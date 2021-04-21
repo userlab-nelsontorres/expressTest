@@ -17,7 +17,7 @@ https
   })
   .listen(port);
 
-
+*/
 app.get("/", (req, res) => {
   var options = {
     hostname:
@@ -45,8 +45,7 @@ app.get("/", (req, res) => {
     console.error(e);
   });
 });
-*/
-
+/*
 app.get("/", async (req, res) => {
   const request = require("request");
   const fs = require("fs");
@@ -85,7 +84,7 @@ app.get("/", async (req, res) => {
     console.log("catch", e);
     res.end();
   }
-});
+});*/
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
