@@ -1,9 +1,9 @@
 const express = require("express");
 const https = require("https");
 const fs = require("fs");
-//const app = express();
+const app = express();
 const port = 3000;
-
+/*
 const options = {
   pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
   passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
@@ -17,7 +17,7 @@ https
   })
   .listen(port);
 
-/*
+
 app.get("/", (req, res) => {
   var options = {
     hostname:
@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
     path: "/",
     method: "GET",
     pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
+    passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
   };
 
   options.agent = new https.Agent(options);
@@ -45,7 +46,7 @@ app.get("/", (req, res) => {
   });
 });
 */
-/*
+
 app.get("/", async (req, res) => {
   const request = require("request");
   const fs = require("fs");
@@ -60,13 +61,13 @@ app.get("/", async (req, res) => {
       pfx: fs.readFileSync(
         __dirname + "/Moocho-API-CertificationService-GW.p12"
       ),
-      passphrase: "password",
-      securityOptions: "SSL_OP_NO_SSLv3",
+      passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
+      //securityOptions: "SSL_OP_NO_SSLv3",
     },
   };
   console.log(options, "options");
   try {
-    await new Promise((resolve, rejects) => {
+    let P = await new Promise((resolve, rejects) => {
       request.get(options, (error, response, body) => {
         if (error) {
           console.log(error, "error");
@@ -79,7 +80,7 @@ app.get("/", async (req, res) => {
       });
     });
     console.log("end");
-    res.send("Hello World!");
+    res.send("Hello World!", P);
   } catch (e) {
     console.log("catch", e);
     res.end();
@@ -88,4 +89,4 @@ app.get("/", async (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
-});*/
+});
