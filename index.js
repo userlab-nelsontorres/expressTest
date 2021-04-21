@@ -111,10 +111,31 @@ https
     app
   )
   .listen(PUERTO, function () {
-    console.log("Servidor https correindo en el puerto 443");
+    console.log("Servidor https correindo en el puerto 8443");
   });
 
 app.get("/", function (req, res) {
-  res.send("Hola, estas en la pagina inicial");
-  console.log("Se recibio una petición get a través de https");
+  console.log("https");
+  var options = {
+    hostname: "api.blackhawknetwork.com",
+    path: "/productCatalogManagement/v1/productCatalogs",
+    method: "GET",
+    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
+  };
+
+  options.agent = new https.Agent(options);
+
+  var req = https.request(options, function (res) {
+    console.log("statusCode: ", res.statusCode);
+    console.log("headers: ", res.headers);
+
+    res.on("data", function (d) {
+      process.stdout.write(d);
+    });
+  });
+
+  req.on("error", function (e) {
+    console.error(e, "ERROR");
+  });
+  res.send("Server");
 });
