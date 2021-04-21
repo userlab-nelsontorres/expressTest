@@ -5,8 +5,33 @@ const app = express();
 const port = 3000;
 
 app.get("/", (req, res) => {
+  console.log("https");
+  https.headers = {
+    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
+  };
+  const headers = {
+    "content-type": "application/json",
+    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
+  };
+  var req = https.get(
+    "https://api.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
+    { headers },
+    function (res) {
+      console.log("statusCode: ", res.statusCode);
+      console.log("headers: ", res.headers);
+
+      res.on("data", function (d) {
+        process.stdout.write(d);
+      });
+    }
+  );
+
+  req.on("error", function (e) {
+    console.error(e, "ERROR");
+  });
   res.send("Los roqueritos del regueton!");
 });
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
