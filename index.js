@@ -155,9 +155,7 @@ app.get("/", function (req, res) {
   };
 
   options.agent = new https.Agent(options);
-  https.headers = {
-    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
-  };
+
   const headers = {
     "content-type": "application/json",
     requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
