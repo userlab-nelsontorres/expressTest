@@ -78,7 +78,7 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost2:${port}`);
 });
-*/
+
 
 app.get("/", async (req, res) => {
   const request = require("request");
@@ -124,23 +124,23 @@ app.get("/", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-
+*/
 //archivo index.js
-/*
+
 var express = require("express");
 var fs = require("fs");
 var https = require("https");
 var app = express();
 
-const PUERTO = 8443;
+const PUERTO = 3000;
 
 https
   .createServer(
     {
-      cert: fs.readFileSync(`./certs/moochoBlack.crt`),
-      key: fs.readFileSync(`./certs/moochoBlack.key`),
+      cert: fs.readFileSync(`../certs/moochoBlack.crt`),
+      key: fs.readFileSync(`../certs/moochoBlack.key`),
       passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
-      localAddress: "23.21.31.14:8443",
+      //localAddress: "23.21.31.14:8443",
     },
     app
   )
@@ -163,7 +163,7 @@ app.get("/", function (req, res) {
     requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
   var req = https.get(
-    "https://api.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
+    "https://api.certification.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
     { headers },
     function (res) {
       console.log("statusCode: ", res.statusCode);
@@ -180,4 +180,3 @@ app.get("/", function (req, res) {
   });
   res.send("Server");
 });
-*/
