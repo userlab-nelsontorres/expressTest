@@ -3,7 +3,7 @@ const https = require("https");
 const fs = require("fs");
 const app = express();
 const port = 3000;
-
+/*
 app.get("/", (req, res) => {
   const headers = {
     "content-type": "application/json",
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost3:${port}`);
-});
+});*/
 /*
 const options = {
   pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
@@ -45,16 +45,16 @@ https
     res.end("hello world\n");
   })
   .listen(port);
-
+*/
 app.get("/", (req, res) => {
   var options = {
     hostname: "api.blackhawknetwork.com",
     port: 8080,
     path: "/productCatalogManagement/v1/productCatalogs",
     method: "GET",
-    pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
+    pfx: fs.readFileSync(`./certs/Moocho-API-CertificationService-GW.p12`),
     passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
-    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
+    //requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
 
   options.agent = new https.Agent(options);
@@ -72,6 +72,9 @@ app.get("/", (req, res) => {
   req.on("error", function (e) {
     console.error(e, "ERROR");
   });
+});
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost3:${port}`);
 });
 
 /*
