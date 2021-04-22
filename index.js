@@ -104,14 +104,14 @@ app.get("/", async (req, res) => {
           console.log(error, "error");
           rejects(error);
         } else {
-          console.log(response, "response");
+          //console.log(response, "response");
           console.log(body, "body");
           resolve(response);
         }
       });
     });
     console.log("end");
-    res.send("Hello World!", P);
+    res.send(P);
   } catch (e) {
     console.log("catch", e);
     res.end();
