@@ -48,11 +48,13 @@ https
 */
 app.get("/", (req, res) => {
   var options = {
-    hostname: "api.blackhawknetwork.com",
-    port: 8080,
+    hostname: "https://api.certification.blackhawknetwork.com",
+    port: 443,
     path: "/productCatalogManagement/v1/productCatalogs",
     method: "GET",
-    pfx: fs.readFileSync(`./certs/Moocho-API-CertificationService-GW.p12`),
+    pfx: fs.readFileSync(
+      `./certs/expressTest/Moocho-API-CertificationService-GW.p12`
+    ),
     passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
     //requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
@@ -74,7 +76,7 @@ app.get("/", (req, res) => {
   });
 });
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost3:${port}`);
+  console.log(`Example app listening at http://localhost2:${port}`);
 });
 
 /*
