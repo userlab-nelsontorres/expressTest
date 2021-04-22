@@ -3,7 +3,7 @@ const https = require("https");
 const fs = require("fs");
 const app = express();
 const port = 3000;
-
+/*
 app.get("/", (req, res) => {
   const headers = {
     "content-type": "application/json",
@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost3:${port}`);
 });
-/*
+
 const options = {
   pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
   passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
@@ -78,11 +78,11 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost2:${port}`);
 });
 
-
+*/
 app.get("/", async (req, res) => {
   const request = require("request");
   const fs = require("fs");
-  console.log(__dirname, "__dirname");
+
   var options = {
     url:
       "https://api.certification.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
@@ -91,9 +91,7 @@ app.get("/", async (req, res) => {
       //requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
     },
     agentOptions: {
-      pfx: fs.readFileSync(
-        `./certs/expressTest/Moocho-API-CertificationService-GW.p12`
-      ),
+      pfx: fs.readFileSync(`../certs/Moocho-API-CertificationService-GW.p12`),
       passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
       securityOptions: "SSL_OP_NO_SSLv3",
     },
@@ -123,4 +121,3 @@ app.get("/", async (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-*/
