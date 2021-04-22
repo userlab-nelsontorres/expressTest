@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
   var req = https.get(
-    "https://api.certification.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
+    "https://api.certification.blackhawknetwork.com",
     { headers },
     function (res) {
       console.log("statusCode: ", res.statusCode);
