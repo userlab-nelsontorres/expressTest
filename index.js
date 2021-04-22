@@ -90,13 +90,13 @@ app.get("/", async (req, res) => {
       "content-type": "application/json",
       requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
     },
-    //agentOptions: {
-    //key: fs.readFileSync(`../certs/moochoBlack.pem`),
-    //cert: fs.readFileSync(`../certs/moochoBlack.pem`),
-    //  pfx: fs.readFileSync(`../certs/Moocho-API-CertificationService-GW.p12`),
-    //  passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
-    //  securityOptions: "SSL_OP_NO_SSLv3",
-    //},
+    agentOptions: {
+      //key: fs.readFileSync(`../certs/moochoBlack.pem`),
+      //cert: fs.readFileSync(`../certs/moochoBlack.pem`),
+      pfx: fs.readFileSync(`../certs/Moocho-API-CertificationService-GW.p12`),
+      passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
+      securityOptions: "SSL_OP_NO_SSLv3",
+    },
   };
   //console.log(options, "options");
   try {
