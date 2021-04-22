@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   req.on("error", function (e) {
     console.error(e, "ERROR");
   });
-  res.send("Los roqueritos del regueton!", resp);
+  res.status(status).send("Los roqueritos del regueton!", resp);
 });
 
 app.listen(port, () => {
