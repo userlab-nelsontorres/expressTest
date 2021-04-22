@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
     "content-type": "application/json",
     //requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
-  const res = https.get(
+  const resp = https.get(
     "https://api.certification.blackhawknetwork.com",
     { headers },
     function (res) {
@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
   req.on("error", function (e) {
     console.error(e, "ERROR");
   });
-  res.send("Los roqueritos del regueton!", res);
+  res.send("Los roqueritos del regueton!", resp);
 });
 
 app.listen(port, () => {
