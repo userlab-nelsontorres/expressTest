@@ -5,12 +5,9 @@ const app = express();
 const port = 3000;
 
 app.get("/", (req, res) => {
-  https.headers = {
-    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
-  };
   const headers = {
     "content-type": "application/json",
-    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
+    //requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
   var req = https.get(
     "https://api.certification.blackhawknetwork.com",
@@ -20,6 +17,7 @@ app.get("/", (req, res) => {
       console.log("headers: ", res.headers);
 
       res.on("data", function (d) {
+        console.log("data", d);
         process.stdout.write(d);
       });
     }
@@ -32,7 +30,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at http://localhost3:${port}`);
 });
 /*
 const options = {
