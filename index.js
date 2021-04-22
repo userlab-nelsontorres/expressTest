@@ -1,4 +1,4 @@
-/*const express = require("express");
+const express = require("express");
 const https = require("https");
 const fs = require("fs");
 const app = express();
@@ -9,7 +9,7 @@ app.get("/", (req, res) => {
     "content-type": "application/json",
     //requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
   };
-  var req = https.get(
+  const res = https.get(
     "https://api.certification.blackhawknetwork.com",
     { headers },
     function (res) {
@@ -17,7 +17,6 @@ app.get("/", (req, res) => {
       console.log("headers: ", res.headers);
 
       res.on("data", function (d) {
-        console.log("data", d);
         process.stdout.write(d);
       });
     }
@@ -26,12 +25,12 @@ app.get("/", (req, res) => {
   req.on("error", function (e) {
     console.error(e, "ERROR");
   });
-  res.send("Los roqueritos del regueton!");
+  res.send("Los roqueritos del regueton!", res);
 });
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost3:${port}`);
-});*/
+});
 /*
 const options = {
   pfx: fs.readFileSync(__dirname + "/Moocho-API-CertificationService-GW.p12"),
@@ -125,56 +124,3 @@ app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
 */
-//archivo index.js
-
-var express = require("express");
-var fs = require("fs");
-var https = require("https");
-var app = express();
-
-const PUERTO = 8443;
-
-https
-  .createServer(
-    {
-      cert: fs.readFileSync(`../certs/moochoBlack.crt`),
-      key: fs.readFileSync(`../certs/moochoBlack.key`),
-      passphrase: "FF2NX0WB315NLK1RR6611PQWK4",
-      localAddress: "23.21.31.14:8443",
-    },
-    app
-  )
-  .listen(PUERTO, function () {
-    console.log("Servidor https correindo en el puerto 8443");
-  });
-
-app.get("/", function (req, res) {
-  console.log("https");
-  var options = {
-    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
-  };
-
-  options.agent = new https.Agent(options);
-
-  const headers = {
-    "content-type": "application/json",
-    requestorId: "CLMMVC5PQRRYHGZCG6LX47Z6T8",
-  };
-  var req = https.get(
-    "https://api.certification.blackhawknetwork.com/productCatalogManagement/v1/productCatalogs",
-    { headers },
-    function (res) {
-      console.log("statusCode: ", res.statusCode);
-      console.log("headers: ", res.headers);
-
-      res.on("data", function (d) {
-        process.stdout.write(d);
-      });
-    }
-  );
-
-  req.on("error", function (e) {
-    console.error(e, "ERROR");
-  });
-  res.send("Server");
-});
