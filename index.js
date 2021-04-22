@@ -111,7 +111,7 @@ app.get("/", async (req, res) => {
       });
     });
     console.log("end");
-    res.send(P);
+    res.send(P.body);
   } catch (e) {
     console.log("catch", e);
     res.end();
